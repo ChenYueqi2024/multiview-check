@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multiview-check"
+version = "0.1.0"
+description = "Local integrity checks and camera trajectory reports for small multiview datasets"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=10"]
+license = {text = "MIT"}
+authors = [{name = "Yueqi"}]
+
+[project.scripts]
+multiview-check = "multiview_check.__main__:main"
+
+[tool.setuptools]
+packages = ["multiview_check"]

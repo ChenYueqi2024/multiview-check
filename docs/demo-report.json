@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "manifest": "dataset.json",
+  "convention": "camera_to_world",
+  "units": "m",
+  "summary": {
+    "frames": 4,
+    "errors": 3,
+    "warnings": 5,
+    "cameras": 3
+  },
+  "issues": [
+    {
+      "code": "image_dimensions",
+      "severity": "error",
+      "frame": "frame_1",
+      "message": "Declared dimensions differ from the decoded image."
+    },
+    {
+      "code": "rotation",
+      "severity": "error",
+      "frame": "frame_1",
+      "message": "Rotation must be orthonormal with determinant +1 (tolerance 1e-3)."
+    },
+    {
+      "code": "duplicate_path",
+      "severity": "warning",
+      "frame": "frame_2",
+      "message": "Multiple frames reference the same image path."
+    },
+    {
+      "code": "duplicate_content",
+      "severity": "warning",
+      "frame": "frame_2",
+      "message": "Exact encoded image duplicate of frame frame_0."
+    },
+    {
+      "code": "principal_point",
+      "severity": "warning",
+      "frame": "frame_2",
+      "message": "Principal point is outside image bounds; verify crop/resize calibration."
+    },
+    {
+      "code": "timestamp_order",
+      "severity": "warning",
+      "frame": "frame_2",
+      "message": "Timestamp decreases in manifest order."
+    },
+    {
+      "code": "image_missing",
+      "severity": "error",
+      "frame": "missing",
+      "message": "Referenced image file is missing."
+    },
+    {
+      "code": "unreferenced_images",
+      "severity": "warning",
+      "frame": null,
+      "message": "1 image file(s) in the dataset directory are not referenced."
+    }
+  ],
+  "cameras": [
+    {
+      "id": "frame_0",
+      "center": [
+        -1,
+        0,
+        0
+      ],
+      "forward": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "frame_2",
+      "center": [
+        1,
+        0,
+        0
+      ],
+      "forward": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "missing",
+      "center": [
+        -1,
+        0,
+        0
+      ],
+      "forward": [
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

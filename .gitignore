@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+multiview-report/
+my-report/
+broken-report/
+healthy-report/
