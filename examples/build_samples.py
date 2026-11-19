@@ -1,5 +1,6 @@
 """Rebuild tiny, synthetic fixtures and a public report; no personal data."""
 import copy
+import base64
 import json
 import sys
 import zipfile
@@ -43,6 +44,12 @@ def build():
             for path in folder.rglob('*'):
                 if path.is_file():archive.write(path,path.relative_to(ROOT/'examples'))
     print(report['summary'])
+    samples={}
+    for folder in [healthy,broken]:
+        samples[folder.name]=dict(manifest=json.loads((folder/'dataset.json').read_text(encoding='utf-8')),
+            images=[dict(path=path.relative_to(folder).as_posix(),base64=base64.b64encode(path.read_bytes()).decode('ascii'))
+                    for path in sorted((folder/'images').glob('*.png'))])
+    (ROOT/'docs/samples.js').write_text('export const SAMPLES = '+json.dumps(samples,separators=(',',':'))+';\n',encoding='utf-8')
 
 
 if __name__=='__main__':build()
